@@ -5,14 +5,14 @@ namespace NUnitTestProject.Servicies
 {
     public class Sum : ISum
     {
-        public int GetSumAllInts(List<int> listOfNumbers)
+        public int GetSumAllInts(int[] listOfNumbers)
         {
-            throw new NotImplementedException();
+            return listOfNumbers.Sum();
         }
 
-        public int GetSumAllPositives(List<int> listOfNumbers)
+        public int GetSumAllPositives(int[] listOfNumbers)
         {
-            throw new NotImplementedException();
+            return listOfNumbers.Where(num=>num>=0).Sum();
         }
     }
 }

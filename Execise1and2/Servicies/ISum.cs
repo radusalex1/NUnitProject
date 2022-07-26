@@ -2,7 +2,7 @@
 {
     public interface ISum
     {
-        public int GetSumAllInts(List<int> listOfNumbers);
-        public int GetSumAllPositives(List<int> listOfNumbers);
+        public int GetSumAllInts(int[] listOfNumbers);
+        public int GetSumAllPositives(int[] listOfNumbers);
     }
 }
