@@ -1,38 +1,39 @@
-﻿namespace Exercise3
+﻿using System.Globalization;
+
+namespace Exercise3
 {
     public class Date
     {
-        public DateTime CalendaristicDate;
-        public DateTime CurrentDate = DateTime.Today;
+        private DateTime currentDate;
 
-        public Date(DateTime calendaristicDate)
+        public Date(DateTime currentDate)
         {
-            CalendaristicDate = calendaristicDate;
+            this.currentDate = currentDate;
         }
+
         public Date()
         {
 
         }
 
-        public bool IsValid(int year,int month,int day)
+        private bool IsValid(int year, int month, int day)
         {
-            try
-            {
-                var date = new DateTime(year, month, day);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-           
-            return true;
+            return DateTime.TryParse($"{year}-{month}-{day}",
+                                   CultureInfo.InvariantCulture,
+                                   DateTimeStyles.None,
+                                   out _);
         }
 
-        public bool IsExpired()
+        public bool IsExpired(int year, int month, int day)
         {
-            return false;
-        }
+            if (!IsValid(year, month, day))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
 
+            var date = new DateTime(year, month, day);
+
+            return date < currentDate;
+        }
     }
 }
