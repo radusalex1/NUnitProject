@@ -2,13 +2,13 @@
 {
     public class Date
     {
-        public DateTime CalendaristicDate;
-        public DateTime CurrentDate = DateTime.Today;
+        public DateTime CurrentDate;
 
-        public Date(DateTime calendaristicDate)
+        public Date(DateTime currentDate)
         {
-            CalendaristicDate = calendaristicDate;
+            this.CurrentDate = currentDate;
         }
+
         public Date()
         {
 
@@ -25,14 +25,28 @@
                 Console.WriteLine(ex.Message);
                 return false;
             }
-           
+        
             return true;
         }
 
-        public bool IsExpired()
+        public bool IsExpired(int year,int month,int day)
         {
-            return false;
+            if(IsValid(year,month,day))
+            {
+                var date = new DateTime(year,month,day);
+                if (date < CurrentDate)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                throw new System.ArgumentOutOfRangeException();
+            }
         }
-
     }
 }
