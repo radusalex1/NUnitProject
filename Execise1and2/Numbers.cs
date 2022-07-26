@@ -5,9 +5,9 @@ namespace NUnitTestProject
     public class Numbers
     {
         public Sum sum;
-        public List<int> numbers;
+        public int[] numbers;
 
-        public Numbers(List<int> numbers)
+        public Numbers(int[] numbers)
         {
             sum = new Sum();
             this.numbers = numbers;
