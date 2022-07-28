@@ -1,6 +1,6 @@
-﻿using NUnitTestProject.Servicies;
+﻿using Execise1and2.Servicies;
 
-namespace NUnitTestProject
+namespace Execise1and2
 {
     public class Numbers
     {

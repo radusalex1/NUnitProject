@@ -1,4 +1,4 @@
-﻿namespace NUnitTestProject.Interfaces
+﻿namespace Execise1and2.Servicies
 {
     public interface ISum
     {
