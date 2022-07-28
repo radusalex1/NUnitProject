@@ -1,7 +1,4 @@
-﻿using NUnitTestProject.Interfaces;
-
-
-namespace NUnitTestProject.Servicies
+﻿namespace Execise1and2.Servicies
 {
     public class Sum : ISum
     {
@@ -12,7 +9,7 @@ namespace NUnitTestProject.Servicies
 
         public int GetSumAllPositives(int[] listOfNumbers)
         {
-            return listOfNumbers.Where(num=>num>=0).Sum();
+            return listOfNumbers.Where(num => num >= 0).Sum();
         }
     }
 }

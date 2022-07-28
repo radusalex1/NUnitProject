@@ -1,15 +1,15 @@
-﻿using NUnit.Framework;
-using NUnitTestProject;
+﻿using Execise1and2;
+using NUnit.Framework;
 using System;
 
-namespace SumNumbersProjectTest
+namespace Exercise1and2Test
 {
 
     [TestFixture]
     public class NumbersTest
     {
         [Test]
-        [TestCase(new int[] { 1, 2, -3, 4, 0 } ,ExpectedResult=4)]
+        [TestCase(new int[] { 1, 2, -3, 4, 0 }, ExpectedResult = 4)]
         public int ReturnSumOfInts_ShouldReturnSum_WhenInputIsValid(int[] ints)
         {
             Numbers numbers = new Numbers(ints);
@@ -78,7 +78,7 @@ namespace SumNumbersProjectTest
         {
             Numbers numbers = new Numbers(ints);
 
-            Assert.That(()=> numbers.ReturnSumOfPositives(), Throws.TypeOf<OverflowException>());
+            Assert.That(() => numbers.ReturnSumOfPositives(), Throws.TypeOf<OverflowException>());
         }
 
     }
