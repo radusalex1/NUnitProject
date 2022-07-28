@@ -1,11 +1,4 @@
 ﻿using Exercise4;
 
+MathUtil math=new MathUtil();
 
-if(2==2.01)
-{
-    Console.WriteLine("true");
-}
-else
-{
-    Console.WriteLine("false");
-}

@@ -1,24 +1,35 @@
-﻿using Exercise4.Servicies;
-
-namespace Exercise4
+﻿namespace Exercise4
 {
-    //TODO: trebuie facut cast la double la cele 2 numere;
+    
     public class MathUtil
     {
-        public double a;
-        public double b;
-        public ParseNumber parseNumber;
-
+        int a;
+        int b;
         public MathUtil(int a, int b)
         {
-            this.parseNumber = new ParseNumber();
-            this.a = parseNumber.ConvertToDoubleType(a);
-            this.b = parseNumber.ConvertToDoubleType(b);
+            this.a = a;
+            this.b = b;
+        }
+        public MathUtil()
+        {
+
         }
 
         public double Average()
         {
-            return (a + b) / 2;
+            var x=ConvertToDouble(a);
+            var y=ConvertToDouble(b);
+            return GetSum(x,y) / 2;
+        }
+
+        public double ConvertToDouble(int number)
+        {
+            return Convert.ToDouble(number);
+        }
+
+        public double GetSum(double x, double y)
+        {
+            return x + y;
         }
     }
 }
