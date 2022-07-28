@@ -9,10 +9,10 @@ namespace Exercise3Test
     {
         [Test]
         [TestCase(2022, 07, 29, ExpectedResult = false)]
-        [TestCase(2022, 07, 26, ExpectedResult = false)]
+        [TestCase(2022, 07, 27, ExpectedResult = false)]
         public bool DateIsExpired_ShouldPass_WhenInputDateTimeIsNotExpired(int year,int month,int day)
         {
-            DateTime today = DateTime.Today;
+            DateTime today = new DateTime(2022, 07, 27);
             var sut = new Date(today);
             return sut.IsExpired(year, month, day);
         }
@@ -22,7 +22,7 @@ namespace Exercise3Test
         [TestCase(2022, 07, 24, ExpectedResult = true)]
         public bool DateIsExpired_ShouldPass_WhenInputDateTimeIsExpired(int year, int month, int day)
         {
-            DateTime today = DateTime.Today;
+            DateTime today = new DateTime(2022, 07, 27);
             var sut = new Date(today);
             return sut.IsExpired(year, month, day);
         }

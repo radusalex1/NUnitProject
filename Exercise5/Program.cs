@@ -1,4 +1,3 @@
-﻿DateTime DateTime = DateTime.Now.AddDays(2);
-DateTime date;
-date = new DateTime(2022, 14, 20);
-Console.WriteLine(((int)DateTime.DayOfWeek));
+﻿var dateTime = DateTime.Now.AddDays(2);
+var date = new DateTime(2022, 07, 28);
+Console.WriteLine(dateTime.DayOfWeek.ToString());
