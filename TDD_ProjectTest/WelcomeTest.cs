@@ -7,6 +7,15 @@ namespace TDD_ProjectTest
     [TestFixture]
     public class WelcomeTest
     {
+
+        public Welcome sut;
+
+        [SetUp]
+        public void Init()
+        {
+            sut = new Welcome();
+        }
+
         [Test]
         [TestCase("Alina",ExpectedResult = "Hello, Alina.")]
         [TestCase("Nume",ExpectedResult = "Hello, Nume.")]
@@ -20,52 +29,54 @@ namespace TDD_ProjectTest
         [TestCase("",ExpectedResult = "Hello, my friend.")]
         public string Greet_ShouldReturn_CorrectGreetWhenNameIsEmpty(string name)
         {
-            var sut = new Welcome();
             return sut.Greet(name);
         }
 
         [Test]
-        [TestCase("MARIA",ExpectedResult = "HELLO,MARIA!")]
+        [TestCase("MARIA",ExpectedResult = "HELLO MARIA!")]
         public string Greet_ShouldReturn_CorrectGreetWhenNameIsShouted(string name)
         {
-            var sut = new Welcome();
             return sut.Greet(name);
         }
 
         [Test]
-        [TestCase("Dode","Ana","Vali",ExpectedResult = "Hello, Dode, Vali, and Ana.")]
+        [TestCase("Dode","Ana","Vali",ExpectedResult = "Hello, Dode, Ana and Vali.")]
+        [TestCase("George","Ioana",ExpectedResult = "Hello, George and Ioana.")]
         public string Greet_ShouldReturn_CorrectGreetWhenInputIsListOfNames(params string[] names)
         {
             var listOfNames = names.ToList();
-            var sut = new Welcome();
             return sut.Greet(listOfNames);
         }
 
         [Test]
         [TestCase("Ana", "MARIA", "George", ExpectedResult = "Hello, Ana and George. AND HELLO MARIA!")]
+        [TestCase("Ana", "MARIA", "GEORGE","Vali", ExpectedResult = "Hello, Ana and Vali. AND HELLO MARIA AND GEORGE!")]
+        [TestCase("Ana", "MARIA", "GEORGE","Vali","ANDREI","Dode", ExpectedResult = "Hello, Ana, Vali and Dode. AND HELLO MARIA, GEORGE AND ANDREI!")]
         public string Greet_ShouldReturn_CorrectMessageWhenInputIsListOfNormalNamesAndShoutedNames(params string [] names)
         {
             var listOfNames = names.ToList();
-            var sut = new Welcome();
             return sut.Greet(listOfNames);
         }
 
         [Test]
-        [TestCase("Victor", "Elena, Dan",ExpectedResult = "Hello,Victor, Elena, and Dan.")]
-        [TestCase("Victor,Andrei", "Elena, Dan",ExpectedResult = "Hello, Victor, Andrei, Elena, and Dan.")]
+        [TestCase("Victor", "Elena,Dan",ExpectedResult = "Hello, Victor, Elena and Dan.")]
+        [TestCase("Victor", "Elena, Dan",ExpectedResult = "Hello, Victor, Elena and Dan.")]
+        [TestCase("Victor,Andrei", "Elena, Dan",ExpectedResult = "Hello, Victor, Andrei, Elena and Dan.")]
+        [TestCase("Victor, Andrei", "Elena, Dan",ExpectedResult = "Hello, Victor, Andrei, Elena and Dan.")]
+        [TestCase("Victor,Andrei", "Elena,Dan",ExpectedResult = "Hello, Victor, Andrei, Elena and Dan.")]
+        [TestCase("Victor Andrei", "Elena,Dan",ExpectedResult = "Hello, Victor Andrei, Elena and Dan.")]
         public string Greet_ShouldReturn_CorrectMessageWhenInputHasCommas(params string []names)
         {
             var listOfNames = names.ToList();
-            var sut = new Welcome();
             return sut.Greet(listOfNames);
         }
 
         [Test]
-        [TestCase("Ana", "\"George, Dan\"",ExpectedResult = "Hello, Ana and George, Dan.")]
+        [TestCase("Ana", "\"George, Dan\"",ExpectedResult = "Hello, Ana, George and Dan.")]
+        [TestCase("Ana", "\"GEORGE, Dan\"",ExpectedResult = "Hello, Ana and Dan. AND HELLO GEORGE!")]
         public string Greet_ShouldReturn_CorrectMessageWhenInputHasUntentionalCommas(params string []names)
         {
             var listOfNames = names.ToList();
-            var sut = new Welcome();
             return sut.Greet(listOfNames);
         }
 
