@@ -33,7 +33,7 @@ namespace TDD_ProjectTest
         }
 
         [Test]
-        [TestCase("MARIA",ExpectedResult = "HELLO, MARIA!")]
+        [TestCase("MARIA",ExpectedResult = "HELLO MARIA!")]
         public string Greet_ShouldReturn_CorrectGreetWhenNameIsShouted(string name)
         {
             return sut.Greet(name);
@@ -60,7 +60,11 @@ namespace TDD_ProjectTest
 
         [Test]
         [TestCase("Victor", "Elena,Dan",ExpectedResult = "Hello, Victor, Elena and Dan.")]
+        [TestCase("Victor", "Elena, Dan",ExpectedResult = "Hello, Victor, Elena and Dan.")]
+        [TestCase("Victor,Andrei", "Elena, Dan",ExpectedResult = "Hello, Victor, Andrei, Elena and Dan.")]
+        [TestCase("Victor, Andrei", "Elena, Dan",ExpectedResult = "Hello, Victor, Andrei, Elena and Dan.")]
         [TestCase("Victor,Andrei", "Elena,Dan",ExpectedResult = "Hello, Victor, Andrei, Elena and Dan.")]
+        [TestCase("Victor Andrei", "Elena,Dan",ExpectedResult = "Hello, Victor Andrei, Elena and Dan.")]
         public string Greet_ShouldReturn_CorrectMessageWhenInputHasCommas(params string []names)
         {
             var listOfNames = names.ToList();
@@ -68,7 +72,8 @@ namespace TDD_ProjectTest
         }
 
         [Test]
-        [TestCase("Ana", "\"George, Dan\"",ExpectedResult = "Hello, Ana and George, Dan.")]
+        [TestCase("Ana", "\"George, Dan\"",ExpectedResult = "Hello, Ana, George and Dan.")]
+        [TestCase("Ana", "\"GEORGE, Dan\"",ExpectedResult = "Hello, Ana and Dan. AND HELLO GEORGE!")]
         public string Greet_ShouldReturn_CorrectMessageWhenInputHasUntentionalCommas(params string []names)
         {
             var listOfNames = names.ToList();
